@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GradMate - Your Digital Student Portfolio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-10 border-b border-slate-200">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <!-- Website Logo and Name -->
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="w-8 h-8 bg-indigo-600 text-white flex items-center justify-center rounded-lg font-bold">
+                        G
+                    </div>
+                    <span class="text-xl font-bold text-slate-800">GradMate</span>
+                </a>
+                
+                <!-- Navigation Links -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#features" class="text-slate-600 hover:text-indigo-600 transition-colors">Features</a>
+                    <a href="#about" class="text-slate-600 hover:text-indigo-600 transition-colors">About</a>
+                    <a href="#contact" class="text-slate-600 hover:text-indigo-600 transition-colors">Contact</a>
+                </nav>
+                
+                <!-- Login/Register Buttons -->
+                <div class="flex items-center space-x-4">
+                    <a href="dashboard.html" class="text-slate-600 hover:text-indigo-600 transition-colors font-medium">Login</a>
+                    <a href="dashboard.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors">Register</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <main class="pt-24 pb-12">
+        <section class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold text-slate-900 leading-tight">
+                Showcase Your Journey, <span class="text-indigo-600">Build Your Future.</span>
+            </h1>
+            <p class="mt-6 max-w-2xl mx-auto text-lg text-slate-600">
+                GradMate is a centralized platform for students to track, manage, and verify all their academic and extracurricular achievements in one place.
+            </p>
+            <div class="mt-8 flex justify-center space-x-4">
+                <a href="dashboard.html" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-transform hover:scale-105">Get Started</a>
+                <a href="#features" class="bg-white text-slate-700 px-6 py-3 rounded-lg font-semibold border border-slate-300 hover:bg-slate-100 transition-colors">Learn More</a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="container mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">All-in-One Student Hub</h2>
+                <p class="mt-4 text-slate-600">Everything you need to build a comprehensive digital portfolio.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1: Centralized Record -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="font-bold text-lg text-slate-800">Centralized Record</h3>
+                    <p class="mt-2 text-slate-600">A single platform to manage all your internships, projects, and certificates.</p>
+                </div>
+                <!-- Feature 2: Faculty Verification -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="font-bold text-lg text-slate-800">Faculty Verification</h3>
+                    <p class="mt-2 text-slate-600">Get your achievements verified by faculty to build a trusted, tamper-proof profile.</p>
+                </div>
+                <!-- Feature 3: Automated Reports -->
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <h3 class="font-bold text-lg text-slate-800">Automated Reports</h3>
+                    <p class="mt-2 text-slate-600">Generate professional, verified PDF reports of your activities for recruiters.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
+
