@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Builder - GradMate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-indigo-100 via-white to-slate-200 flex flex-col">
+    <nav class="flex items-center justify-between px-8 py-4 bg-white shadow-sm border-b">
+        <div class="flex items-center space-x-3">
+            <img src="gradmate-logo.jpg" alt="GradMate Logo" class="w-12 h-12 object-contain rounded-lg bg-white shadow" />
+            <span class="text-2xl font-bold text-indigo-700 tracking-tight">GradMate</span>
+        </div>
+        <a href="dashboard.html" class="text-indigo-600 hover:text-indigo-800 font-medium transition">Back to Dashboard</a>
+    </nav>
+    <main class="flex-1 flex flex-col items-center justify-start py-10 px-4">
+        <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-2">AI Resume Builder</h1>
+        <p class="text-slate-500 mb-8 text-center max-w-xl">Generate a professional resume using your GradMate profile and activities. Fill in or update your details below and click 'Generate Resume'.</p>
+        <div class="w-full max-w-2xl bg-white rounded-2xl shadow-lg p-8 border border-slate-100">
+            <form id="resume-form" class="space-y-6">
+                <div>
+                    <label class="block text-slate-700 font-medium mb-1" for="name">Full Name</label>
+                    <input id="name" name="name" type="text" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50" required>
+                </div>
+                <div>
+                    <label class="block text-slate-700 font-medium mb-1" for="email">Email</label>
+                    <input id="email" name="email" type="email" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50" required>
+                </div>
+                <div>
+                    <label class="block text-slate-700 font-medium mb-1" for="summary">Professional Summary</label>
+                    <textarea id="summary" name="summary" rows="3" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50" placeholder="A brief summary about yourself..."></textarea>
+                </div>
+                <div>
+                    <label class="block text-slate-700 font-medium mb-1" for="skills">Skills (comma separated)</label>
+                    <input id="skills" name="skills" type="text" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50" placeholder="e.g. Python, Data Analysis, Leadership">
+                </div>
+                <div>
+                    <label class="block text-slate-700 font-medium mb-1" for="activities">Key Activities & Achievements</label>
+                    <textarea id="activities" name="activities" rows="4" class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50" placeholder="List your top activities, projects, or awards..."></textarea>
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-semibold hover:bg-indigo-700 shadow transition">Generate Resume</button>
+            </form>
+            <div id="resume-output" class="mt-8 hidden">
+                <h2 class="text-2xl font-bold text-indigo-700 mb-4">Your AI-Generated Resume</h2>
+                <div class="bg-slate-50 p-6 rounded-lg border border-slate-200 text-slate-800" id="resume-content"></div>
+                <button onclick="window.print()" class="mt-4 bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition">Print / Save as PDF</button>
+            </div>
+        </div>
+    </main>
+    <script>
+    document.getElementById('resume-form').onsubmit = function(e) {
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const summary = document.getElementById('summary').value;
+        const skills = document.getElementById('skills').value;
+        const activities = document.getElementById('activities').value;
+        const resume = `
+            <div><strong>Name:</strong> ${name}</div>
+            <div><strong>Email:</strong> ${email}</div>
+            <div class='mt-4'><strong>Professional Summary:</strong><br>${summary}</div>
+            <div class='mt-4'><strong>Skills:</strong><br>${skills.split(',').map(s=>`<span class='inline-block bg-indigo-100 text-indigo-700 px-2 py-1 rounded mr-2 mb-1'>${s.trim()}</span>`).join('')}</div>
+            <div class='mt-4'><strong>Key Activities & Achievements:</strong><br>${activities.replace(/\n/g,'<br>')}</div>
+        `;
+        document.getElementById('resume-content').innerHTML = resume;
+        document.getElementById('resume-output').classList.remove('hidden');
+        window.scrollTo({ top: document.getElementById('resume-output').offsetTop, behavior: 'smooth' });
+    };
+    </script>
+</body>
+</html>

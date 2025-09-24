@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Register - GradMate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        spline-viewer::part(watermark),
+        spline-viewer::part(logo) {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center relative overflow-hidden bg-black">
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.68/build/spline-viewer.js"></script>
+    <div class="flex w-full h-screen items-center justify-center relative z-0">
+        <div class="bg-white/90 p-8 rounded-2xl shadow-2xl w-full max-w-md border border-slate-100 ml-12 mt-8 z-10">
+        <div class="flex flex-col items-center mb-6">
+            <img src="gradmate-logo.jpg" alt="GradMate Logo" class="w-40 h-40 object-contain mb-2 rounded-xl shadow-lg bg-white" />
+        </div>
+        <div class="mb-6 flex justify-center space-x-2">
+            <button id="show-login" class="px-5 py-2 rounded-lg font-semibold bg-indigo-600 text-white shadow hover:bg-indigo-700 transition">Login</button>
+            <button id="show-register" class="px-5 py-2 rounded-lg font-semibold bg-slate-200 text-indigo-700 hover:bg-slate-300 transition">Register</button>
+        </div>
+        <div class="relative">
+            <form id="login-form" class="space-y-5 animate-fade-in">
+                <div class="relative">
+                    <input type="email" id="login-email" class="peer w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 placeholder-transparent" placeholder="Email" required>
+                    <label for="login-email" class="absolute left-4 top-3 text-slate-400 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-4 peer-focus:text-xs peer-focus:text-indigo-600 bg-white px-1">Email</label>
+                </div>
+                <div class="relative">
+                    <input type="password" id="login-password" class="peer w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 placeholder-transparent pr-12" placeholder="Password" required>
+                    <label for="login-password" class="absolute left-4 top-3 text-slate-400 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-4 peer-focus:text-xs peer-focus:text-indigo-600 bg-white px-1">Password</label>
+                    <button type="button" id="toggle-login-password" class="absolute right-3 top-3 text-slate-400 hover:text-indigo-600 focus:outline-none" tabindex="-1">
+                        <svg id="login-eye" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm-9 0a9 9 0 0118 0c0 2.21-3.582 8-9 8s-9-5.79-9-8z" /></svg>
+                    </button>
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-semibold hover:bg-indigo-700 shadow transition">Login</button>
+            </form>
+            <form id="register-form" class="space-y-5 hidden animate-fade-in">
+                <div class="relative">
+                    <input type="text" id="register-name" class="peer w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 placeholder-transparent" placeholder="Full Name" required>
+                    <label for="register-name" class="absolute left-4 top-3 text-slate-400 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-4 peer-focus:text-xs peer-focus:text-indigo-600 bg-white px-1">Full Name</label>
+                </div>
+                <div class="relative">
+                    <input type="email" id="register-email" class="peer w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 placeholder-transparent" placeholder="Email" required>
+                    <label for="register-email" class="absolute left-4 top-3 text-slate-400 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-4 peer-focus:text-xs peer-focus:text-indigo-600 bg-white px-1">Email</label>
+                </div>
+                <div class="relative">
+                    <input type="password" id="register-password" class="peer w-full px-4 py-3 border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 bg-slate-50 placeholder-transparent pr-12" placeholder="Password" required>
+                    <label for="register-password" class="absolute left-4 top-3 text-slate-400 text-sm transition-all peer-placeholder-shown:top-3 peer-placeholder-shown:text-base peer-focus:-top-4 peer-focus:text-xs peer-focus:text-indigo-600 bg-white px-1">Password</label>
+                    <button type="button" id="toggle-register-password" class="absolute right-3 top-3 text-slate-400 hover:text-indigo-600 focus:outline-none" tabindex="-1">
+                        <svg id="register-eye" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm-9 0a9 9 0 0118 0c0 2.21-3.582 8-9 8s-9-5.79-9-8z" /></svg>
+                    </button>
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2.5 rounded-lg font-semibold hover:bg-indigo-700 shadow transition">Register</button>
+            </form>
+        </div>
+        </div>
+        <div class="hidden md:block flex-1 h-full relative z-0">
+            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-[600px] h-[600px] max-w-[50vw] max-h-[80vh]">
+                <div style="background:black; width:100%; height:100%; position:absolute; top:0; left:0; z-index:0;"></div>
+                <div style="position:relative; z-index:1; width:100%; height:100%;">
+                    <spline-viewer url="https://prod.spline.design/7GsK1I99mQN1QFsW/scene.splinecode" style="width:100%;height:100%;background:transparent;"></spline-viewer>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const showLogin = document.getElementById('show-login');
+        const showRegister = document.getElementById('show-register');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        showLogin.onclick = () => {
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+            showLogin.classList.add('bg-indigo-600', 'text-white');
+            showLogin.classList.remove('bg-slate-200', 'text-indigo-700');
+            showRegister.classList.remove('bg-indigo-600', 'text-white');
+            showRegister.classList.add('bg-slate-200', 'text-indigo-700');
+        };
+        showRegister.onclick = () => {
+            loginForm.classList.add('hidden');
+            registerForm.classList.remove('hidden');
+            showRegister.classList.add('bg-indigo-600', 'text-white');
+            showRegister.classList.remove('bg-slate-200', 'text-indigo-700');
+            showLogin.classList.remove('bg-indigo-600', 'text-white');
+            showLogin.classList.add('bg-slate-200', 'text-indigo-700');
+        };
+        // Show/hide password toggle
+        function togglePassword(inputId, eyeId) {
+            const input = document.getElementById(inputId);
+            const eye = document.getElementById(eyeId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                eye.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-5.418 0-9-5.79-9-8a9.978 9.978 0 012.655-4.665m1.414-1.414A9.978 9.978 0 0112 5c5.418 0 9 5.79 9 8 0 1.657-1.343 4.5-4.5 7.5M15 12a3 3 0 11-6 0 3 3 0 016 0z" />`;
+            } else {
+                input.type = 'password';
+                eye.innerHTML = `<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0zm-9 0a9 9 0 0118 0c0 2.21-3.582 8-9 8s-9-5.79-9-8z" />`;
+            }
+        }
+        document.getElementById('toggle-login-password').onclick = () => togglePassword('login-password', 'login-eye');
+        document.getElementById('toggle-register-password').onclick = () => togglePassword('register-password', 'register-eye');
+    </script>
+</body>
+</html>

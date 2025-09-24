@@ -27,20 +27,21 @@
                     <div class="w-8 h-8 bg-indigo-600 text-white flex items-center justify-center rounded-lg font-bold">
                         G
                     </div>
-                    <span class="text-xl font-bold text-slate-800">GradMate</span>
+                    <span class="text-xl font-bold text-slate-800 cursor-pointer">GradMate</span>
                 </a>
                 
                 <!-- Navigation Links -->
                 <nav class="hidden md:flex space-x-8">
-                    <a href="#features" class="text-slate-600 hover:text-indigo-600 transition-colors">Features</a>
-                    <a href="#about" class="text-slate-600 hover:text-indigo-600 transition-colors">About</a>
-                    <a href="#contact" class="text-slate-600 hover:text-indigo-600 transition-colors">Contact</a>
+                    <a href="index.html" class="text-slate-600 hover:text-indigo-600 transition-colors">Home</a>
+                    <a href="facutly-dashboard.html" class="text-slate-600 hover:text-indigo-600 transition-colors">Faculty Dashboard</a>
+                    <a href="dashboard.html" class="text-slate-600 hover:text-indigo-600 transition-colors">Student Dashboard</a>
+                    <a href="#how-it-works" class="text-slate-600 hover:text-indigo-600 transition-colors">How it Works</a>
                 </nav>
                 
                 <!-- Login/Register Buttons -->
                 <div class="flex items-center space-x-4">
-                    <a href="dashboard.html" class="text-slate-600 hover:text-indigo-600 transition-colors font-medium">Login</a>
-                    <a href="dashboard.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors">Register</a>
+                    <a href="auth.html?tab=login" class="text-slate-600 hover:text-indigo-600 transition-colors font-medium">Login</a>
+                    <a href="auth.html?tab=register" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors">Register</a>
                 </div>
             </div>
         </div>
@@ -56,12 +57,42 @@
                 GradMate is a centralized platform for students to track, manage, and verify all their academic and extracurricular achievements in one place.
             </p>
             <div class="mt-8 flex justify-center space-x-4">
-                <a href="dashboard.html" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-transform hover:scale-105">Get Started</a>
+                <a href="auth.html" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition-transform hover:scale-105">Get Started</a>
                 <a href="#features" class="bg-white text-slate-700 px-6 py-3 rounded-lg font-semibold border border-slate-300 hover:bg-slate-100 transition-colors">Learn More</a>
             </div>
         </section>
 
-        <!-- Features Section -->
+    <!-- Features Section -->
+        <!-- How it Works Section -->
+        <section id="how-it-works" class="container mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-slate-900">How it Works</h2>
+                <p class="mt-4 text-slate-600 max-w-2xl mx-auto">GradMate makes it easy for students and faculty to manage, verify, and showcase achievements. Here’s how you get started:</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center">
+                    <div class="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-100 mb-4">
+                        <span class="text-2xl font-bold text-indigo-600">1</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 mb-2">Sign Up</h3>
+                    <p class="text-slate-600">Create your account as a student or faculty member to get started.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center">
+                    <div class="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-100 mb-4">
+                        <span class="text-2xl font-bold text-indigo-600">2</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 mb-2">Add & Submit</h3>
+                    <p class="text-slate-600">Students add activities, projects, and certificates. Submit them for faculty verification.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md flex flex-col items-center">
+                    <div class="w-12 h-12 flex items-center justify-center rounded-full bg-indigo-100 mb-4">
+                        <span class="text-2xl font-bold text-indigo-600">3</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 mb-2">Verify & Showcase</h3>
+                    <p class="text-slate-600">Faculty review and verify submissions. Students can then download verified reports and showcase their achievements.</p>
+                </div>
+            </div>
+        </section>
         <section id="features" class="container mx-auto px-4 sm:px-6 lg:px-8 mt-24">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-slate-900">All-in-One Student Hub</h2>

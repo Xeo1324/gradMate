@@ -23,13 +23,17 @@
                 <span class="text-2xl font-bold text-slate-800">GradMate</span>
             </a>
             <nav class="mt-6 px-4">
-                 <a href="faculty-dashboard.html" class="flex items-center px-4 py-3 bg-indigo-50 text-indigo-600 rounded-lg font-semibold">
+                <a href="faculty-dashboard.html" class="flex items-center px-4 py-3 bg-indigo-50 text-indigo-600 rounded-lg font-semibold">
                     <i class="fas fa-tachometer-alt w-6 h-6 mr-3"></i>
                     Dashboard
                 </a>
-                <a href="#" class="flex items-center px-4 py-3 mt-2 text-slate-600 hover:bg-slate-100 hover:text-indigo-600 rounded-lg transition-colors">
+                <a href="profile.html" class="flex items-center px-4 py-3 mt-2 text-slate-600 hover:bg-slate-100 hover:text-indigo-600 rounded-lg transition-colors">
                     <i class="fas fa-user-circle w-6 h-6 mr-3"></i>
                     Profile
+                </a>
+                <a href="all-reviews.html" class="flex items-center px-4 py-3 mt-2 text-slate-600 hover:bg-slate-100 hover:text-indigo-600 rounded-lg transition-colors">
+                    <i class="fas fa-table w-6 h-6 mr-3"></i>
+                    All Reviews
                 </a>
             </nav>
             <div class="absolute bottom-0 w-64 p-4">
@@ -42,7 +46,12 @@
 
         <!-- Main Content Area -->
         <main class="flex-1 p-6">
-            <h1 class="text-2xl font-bold text-slate-800 mb-6">Faculty Dashboard</h1>
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-2xl font-bold text-slate-800">Faculty Dashboard</h1>
+                <a href="index.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-indigo-700 transition-colors flex items-center">
+                    <i class="fas fa-home mr-2"></i>Back to Home
+                </a>
+            </div>
             <div class="max-w-7xl mx-auto">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
                     <div class="bg-white p-6 rounded-xl shadow-md"><p class="text-sm font-medium text-slate-500">Pending Review</p><p class="text-3xl font-bold text-slate-800">12</p></div>
@@ -51,11 +60,49 @@
                 </div>
                 <div class="bg-white p-6 rounded-xl shadow-md">
                     <h2 class="text-lg font-bold text-slate-800 mb-4">Pending Submissions</h2>
-                    <table class="w-full text-left"><thead><tr class="text-xs font-semibold text-slate-500 uppercase border-b border-slate-200"><th>Student</th><th>Activity</th><th>Category</th><th>Submitted</th><th>Action</th></tr></thead><tbody><tr class="border-b border-slate-200"><td class="px-4 py-3">John Doe</td><td class="px-4 py-3">National Hackathon</td><td class="px-4 py-3">Competition</td><td class="px-4 py-3">22 Sep, 2025</td><td class="px-4 py-3"><a href="faculty-review.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700">Review</a></td></tr><tr class="border-b border-slate-200"><td class="px-4 py-3">Jane Smith</td><td class="px-4 py-3">Internship at Syncode</td><td class="px-4 py-3">Internship</td><td class="px-4 py-3">21 Sep, 2025</td><td class="px-4 py-3"><a href="faculty-review.html" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700">Review</a></td></tr></tbody></table>
+                    <table class="w-full text-left"><thead><tr class="text-xs font-semibold text-slate-500 uppercase border-b border-slate-200"><th>Student</th><th>Activity</th><th>Category</th><th>Submitted</th><th>Action</th></tr></thead><tbody><tr class="border-b border-slate-200"><td class="px-4 py-3">John Doe</td><td class="px-4 py-3">National Hackathon</td><td class="px-4 py-3">Competition</td><td class="px-4 py-3">22 Sep, 2025</td><td class="px-4 py-3"><button onclick="openReviewModal('John Doe','National Level Hackathon','Competition','22 Sep, 2025','Won first place at the Smart India Hackathon 2025 for our project on digital student portfolios.','Certificate_SIH2025.pdf')" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700">Review</button></td></tr><tr class="border-b border-slate-200"><td class="px-4 py-3">Jane Smith</td><td class="px-4 py-3">Internship at Syncode</td><td class="px-4 py-3">Internship</td><td class="px-4 py-3">21 Sep, 2025</td><td class="px-4 py-3"><button onclick="openReviewModal('Jane Smith','Internship at Syncode','Internship','21 Sep, 2025','Completed summer internship at Syncode, worked on backend APIs.','Internship_Certificate.pdf')" class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700">Review</button></td></tr></tbody></table>
+                    <!-- Review Modal -->
+                    <div id="review-modal" class="fixed inset-0 bg-black/40 flex items-center justify-center z-50 hidden">
+                        <div class="bg-white p-8 rounded-xl shadow-lg max-w-lg w-full relative">
+                            <button onclick="closeReviewModal()" class="absolute top-4 right-4 text-slate-400 hover:text-red-500 text-xl font-bold">&times;</button>
+                            <h1 class="text-2xl font-bold text-slate-800 mb-2">Review Activity Submission</h1>
+                            <p id="modal-submitted-by" class="text-slate-600 mb-6"></p>
+                            <div class="space-y-4">
+                                <div><h3 class="font-semibold text-slate-800">Activity Title</h3><p id="modal-activity-title" class="text-slate-600"></p></div>
+                                <div><h3 class="font-semibold text-slate-800">Category</h3><p id="modal-category" class="text-slate-600"></p></div>
+                                <div><h3 class="font-semibold text-slate-800">Description</h3><p id="modal-description" class="text-slate-600"></p></div>
+                                <div><h3 class="font-semibold text-slate-800">Proof Document</h3><a id="modal-proof-link" href="#" class="text-indigo-600 hover:underline" target="_blank"></a></div>
+                            </div>
+                            <hr class="my-6">
+                            <form class="space-y-4">
+                                <div><label for="remarks" class="block text-sm font-medium text-slate-700">Remarks (Optional)</label><textarea id="remarks" rows="3" placeholder="Add comments for the student..." class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm"></textarea></div>
+                                <div class="flex justify-end space-x-4">
+                                    <button type="button" onclick="closeReviewModal()" class="bg-red-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-red-700">Reject</button>
+                                    <button type="button" onclick="closeReviewModal()" class="bg-green-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-green-700">Approve</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
     </div>
 </body>
+
+<script>
+function openReviewModal(student, activity, category, date, description, proof) {
+    document.getElementById('review-modal').classList.remove('hidden');
+    document.getElementById('modal-submitted-by').textContent = `Submitted by ${student} on ${date}`;
+    document.getElementById('modal-activity-title').textContent = activity;
+    document.getElementById('modal-category').textContent = category;
+    document.getElementById('modal-description').textContent = description;
+    const proofLink = document.getElementById('modal-proof-link');
+    proofLink.textContent = proof;
+    proofLink.href = '#'; // Set to actual file if available
+}
+function closeReviewModal() {
+    document.getElementById('review-modal').classList.add('hidden');
+}
+</script>
 </html>
 
